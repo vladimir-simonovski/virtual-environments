@@ -201,7 +201,7 @@ Function GenerateResourcesAndImage {
 
     New-AzStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $storageAccountName -Location $AzureLocation -SkuName "Standard_LRS" -AllowBlobPublicAccess $AllowBlobPublicAccess -EnableHttpsTrafficOnly $EnableHttpsTrafficOnly
 
-    if (-Not ([string]::Equals($ImageType, "Windows2019AzureCli"))) {
+    if ($ImageType -ne [ImageType]::Windows2019AzureCli) {
         if ([string]::IsNullOrEmpty($AzureClientId)) {
             # Interactive authentication: A service principal is created during runtime.
             $spDisplayName = [System.GUID]::NewGuid().ToString().ToUpper()
@@ -266,7 +266,7 @@ Function GenerateResourcesAndImage {
         Write-Host "Restricting access to packer generated VM to agent IP Address: $AgentIp"
     }
 
-    if (-Not ([string]::Equals($ImageType, "Windows2019AzureCli"))) {
+    if ($ImageType -ne [ImageType]::Windows2019AzureCli) {
         & $packerBinary build -on-error=ask `
             -var "client_id=$($spClientId)" `
             -var "client_secret=$($ServicePrincipalClientSecret)" `
