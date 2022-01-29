@@ -280,7 +280,8 @@ Function GenerateResourcesAndImage {
             $builderScriptPath
     }
     else {
-        -var "subscription_id=$($SubscriptionId)" `
+        & $packerBinary build -on-error=ask `
+            -var "subscription_id=$($SubscriptionId)" `
             -var "tenant_id=$($tenantId)" `
             -var "location=$($AzureLocation)" `
             -var "resource_group=$($ResourceGroupName)" `
