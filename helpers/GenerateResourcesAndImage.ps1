@@ -3,9 +3,10 @@ $ErrorActionPreference = 'Stop'
 enum ImageType {
     Windows2016 = 0
     Windows2019 = 1
-    Windows2022 = 2
-    Ubuntu1804 = 3
-    Ubuntu2004 = 4
+    Windows2019AzureCli = 2
+    Windows2022 = 3
+    Ubuntu1804 = 4
+    Ubuntu2004 = 5
 }
 
 Function Get-PackerTemplatePath {
@@ -277,14 +278,15 @@ Function GenerateResourcesAndImage {
             -var "install_password=$($InstallPassword)" `
             -var "allowed_inbound_ip_addresses=$($AgentIp)" `
             $builderScriptPath
-    } else {
+    }
+    else {
         -var "subscription_id=$($SubscriptionId)" `
-        -var "tenant_id=$($tenantId)" `
-        -var "location=$($AzureLocation)" `
-        -var "resource_group=$($ResourceGroupName)" `
-        -var "storage_account=$($storageAccountName)" `
-        -var "install_password=$($InstallPassword)" `
-        -var "allowed_inbound_ip_addresses=$($AgentIp)" `
-        $builderScriptPath
+            -var "tenant_id=$($tenantId)" `
+            -var "location=$($AzureLocation)" `
+            -var "resource_group=$($ResourceGroupName)" `
+            -var "storage_account=$($storageAccountName)" `
+            -var "install_password=$($InstallPassword)" `
+            -var "allowed_inbound_ip_addresses=$($AgentIp)" `
+            $builderScriptPath
     }
 }
