@@ -45,10 +45,7 @@ function Install-Binary
     $fileExtension = ([System.IO.Path]::GetExtension($Name)).Replace(".", "")
     if ($fileExtension -eq "msi")
     {
-        if (-not $ArgumentList)
-        {
-            $ArgumentList = ('/i', $filePath, '/QN', '/norestart')
-        }
+        $ArgumentList = ('/i', $filePath, '/QN', '/norestart')
         $filePath = "msiexec.exe"
     }
 

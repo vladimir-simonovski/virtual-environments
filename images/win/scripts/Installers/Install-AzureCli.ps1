@@ -5,7 +5,7 @@
 
 Write-Host "Install the latest Azure CLI release"
 $azCliUrl = "https://aka.ms/installazurecliwindows"
-Install-Binary -Url $azCliUrl -Name "azure-cli.msi"
+Install-Binary -Url $azCliUrl -Name "azure-cli.msi" -ArgumentList ("/qn", "/norestart")
 
 $azureCliExtensionPath = Join-Path $Env:CommonProgramFiles 'AzureCliExtensionDirectory'
 $null = New-Item -ItemType "Directory" -Path $azureCliExtensionPath
