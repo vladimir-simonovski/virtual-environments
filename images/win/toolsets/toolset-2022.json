@@ -247,7 +247,8 @@
             "wasm.tools"
         ],
         "vsix": [
-            "VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects"
+            "VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects",
+            "WixToolset.WixToolsetVisualStudio2022Extension"
         ]
     },
     "docker": {
@@ -282,6 +283,9 @@
         "versions": [
             "3.1",
             "5.0"
+        ],
+        "tools": [
+            { "name": "nbgv", "test": "nbgv --version", "getversion": "nbgv --version" }
         ],
         "warmup": false
     },
